@@ -11,21 +11,9 @@ app.use(express.urlencoded({extended:false}));
 const allowedOrigins = ['http://localhost:3000','https://deepnetsoft-1.onrender.com/'];
 
 // CORS options
-const corsOptions = {
-    origin: (origin, callback) => {
-      // Check if the origin is in the allowed list
-      if (allowedOrigins.includes(origin) || !origin) {
-        callback(null, true);
-      } else {
-        console.error(`Not allowed by CORS: ${origin}`);  // Log the disallowed origin
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true
-  };
+
   
-  app.use(cors(corsOptions));
+  app.use(cors());
   
 app.use('/',router)
   
