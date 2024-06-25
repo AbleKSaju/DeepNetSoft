@@ -9,9 +9,9 @@ const Navbar = () => {
       <div className="flex relative flex-row items-center justify-between sm:px-32 h-10 sm:h-20 p-2">
         <a
           href="/"
-          className="fixed z-10 inset-x-0 top-0 flex justify-center sm:justify-start items-center w-screen sm:static"
+          className="z-10 inset-x-0 top-0 flex justify-center sm:justify-start items-center w-screen sm:static"
         >
-          <div className=" flex mt-5 sm:mt-20">
+          <div className=" flex mt-10 sm:mt-20">
             <img
               src="/images/Logo.png"
               alt="Logo"
@@ -43,7 +43,7 @@ const Navbar = () => {
             Contact Us
           </a>
         </nav>
-        <nav className="sm:hidden z-20 absolute right-3 top-3 flex flex-col items-end gap-1 font-semibold">
+        <nav className="sm:hidden bg-black z-20 absolute right-3 top-3 flex flex-col items-end gap-1 font-semibold">
           <button
             onClick={() => setShowMenu(!showMenu)}
             className="sm:hidden z-20 oswald-font text-xl hover:text-gray-500"
@@ -51,7 +51,7 @@ const Navbar = () => {
             {showMenu ? <X /> : <AlignJustify />}
           </button>
           {showMenu && (
-            <>
+            <div className="flex flex-col text-start p-5 gap-y-5">
               <a href="#" className="hover:text-blue-400">
                 Home
               </a>
@@ -64,7 +64,7 @@ const Navbar = () => {
               <a href="#" className="hover:text-blue-400">
                 Contact Us
               </a>
-            </>
+            </div>
           )}
         </nav>
       </div>
