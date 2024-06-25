@@ -12,9 +12,11 @@ const BrunchCocktails = ({ data , loaded }) => {
           ))
         : data?.menuItems?.map((val,index) => (
         <div key={index} className="w-full sm:w-1/2 p-4">
-          <p className="sm:text-2xl oswald-font text-start">
-            {val?.listName}...........${val?.price}
-          </p>
+            <div className="sm:text-2xl oswald-font text-start flex items-center">
+            <span>{val?.listName}</span>
+              <span className="flex-grow dotted-line mx-2 mt-5"></span>
+              <span>${val?.price}</span>
+          </div>
           <p className="kelly-slab-font text-sm text-gray-400 text-start">
             {val.description}
           </p>
