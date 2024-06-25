@@ -8,7 +8,7 @@ const app = express();
 //bodyParser
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['http://localhost:3000','https://deepnetsoft-1.onrender.com/'];
 
 // CORS options
 const corsOptions = {

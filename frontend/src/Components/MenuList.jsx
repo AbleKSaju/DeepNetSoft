@@ -11,7 +11,7 @@ const MenuList = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get('http://localhost:3001/getDatas');
+            const response = await axios.get('https://deepnetsoft-1.onrender.com/getDatas');
             if (response?.status) {
                 setData(response.data)
                 setLoaded(true)
