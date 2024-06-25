@@ -1,7 +1,9 @@
 import {
   Facebook,
   Instagram,
+  LocateIcon,
   Mail,
+  MapPin,
   Phone,
   Twitter,
   Youtube,
@@ -13,22 +15,22 @@ const Footer = () => {
     <>
     <div class="flex flex-wrap justify-center gap-10 oswald-font">
       <div className="h-32">
-        <div class="flex rounded-lg border border-white px-12 flex-col p-4">
+        <div class="flex rounded-lg border border-white px-12 flex-col p-3">
           <div class="flex items-center justify-center mb-3">
             <h2 class="text-blue-500 text-lg font-medium">Connect with Us</h2>
           </div>
           <div class="flex flex-col justify-between gap-2">
-            <p class="flex items-center leading-relaxed text-base text-white dark:text-gray-300">
+            <p class="flex items-center leading-relaxed text-sm text-[#857878]">
               <Phone size={20} /> &nbsp; +1 470-788-8255
             </p>
-            <p class="flex items-center leading-relaxed text-base text-white dark:text-gray-300">
+            <p class="flex items-center leading-relaxed text-sm text-[#857878]">
               <Mail size={20} /> &nbsp; email@42barandgrill.com
             </p>
           </div>
         </div>
       </div>
       <div className="h-32">
-        <div class="flex relative rounded-lg border border-white px-12 flex-col p-4">
+        <div class="flex relative rounded-lg border border-white px-12 flex-col p-2">
           <img
             src="/images/Logo.png"
             alt=""
@@ -61,10 +63,14 @@ const Footer = () => {
             </h2>
           </div>
           <div class="flex flex-col justify-between gap-2">
-            <p class="flex items-center leading-relaxed text-base text-white dark:text-gray-300 pb-3">
+          <p class="flex leading-relaxed text-sm text-[#857878] ">
+            <MapPin size={24}/>
+            &nbsp;
+            <p>
             327 Memorial Dr SE, Atlanta, 
             <br />
             GA 30312, USA
+            </p>
             </p>
 
           </div>

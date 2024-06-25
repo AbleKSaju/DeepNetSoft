@@ -1,42 +1,27 @@
 import React from "react";
+import Shimmer from "./Shimmer";
 
-const Drinks = () => {
-    return (
-        <div className="flex flex-wrap sm:mx-14 text-start">
-          <div className="w-full sm:w-1/2 p-4">
-            <p className="sm:text-2xl oswald-font">LYCHEETINI...........................................................$14</p>
-            <p className="kelly-slab-font text-sm text-gray-400">Empress Indigo gin, elderflower liqueur, lavender essence, fresh lemon juice, eggwhite</p>
-          </div>
-          <div className="w-full sm:w-1/2 p-4">
-            <p className=" sm:text-2xl oswald-font">LYCHEETINI..................................................................$14</p>
-            <p className="kelly-slab-font text-sm text-gray-400">Empress Indigo gin, elderflower liqueur, lavender essence, fresh lemon juice, eggwhite</p>
-          </div>
-          <div className="w-full sm:w-1/2 p-4">
-            <p className=" sm:text-2xl oswald-font">LYCHEETINI..................................................................$14</p>
-            <p className="kelly-slab-font text-sm text-gray-400">Empress Indigo gin, elderflower liqueur, lavender essence, fresh lemon juice, eggwhite</p>
-          </div>
-          <div className="w-full sm:w-1/2 p-4">
-            <p className=" sm:text-2xl oswald-font">LYCHEETINI..................................................................$14</p>
-            <p className="kelly-slab-font text-sm text-gray-400">Empress Indigo gin, elderflower liqueur, lavender essence, fresh lemon juice, eggwhite</p>
-          </div>
-          <div className="w-full sm:w-1/2 p-4">
-            <p className=" sm:text-2xl oswald-font">LYCHEETINI..................................................................$14</p>
-            <p className="kelly-slab-font text-sm text-gray-400">Empress Indigo gin, elderflower liqueur, lavender essence, fresh lemon juice, eggwhite</p>
-          </div>
-          <div className="w-full sm:w-1/2 p-4">
-            <p className=" sm:text-2xl oswald-font">LYCHEETINI..................................................................$14</p>
-            <p className="kelly-slab-font text-sm text-gray-400">Empress Indigo gin, elderflower liqueur, lavender essence, fresh lemon juice, eggwhite</p>
-          </div>
-          <div className="w-full sm:w-1/2 p-4">
-            <p className=" sm:text-2xl oswald-font">LYCHEETINI..................................................................$14</p>
-            <p className="kelly-slab-font text-sm text-gray-400">Empress Indigo gin, elderflower liqueur, lavender essence, fresh lemon juice, eggwhite</p>
-          </div>
-          <div className="w-full sm:w-1/2 p-4">
-            <p className=" sm:text-2xl oswald-font">LYCHEETINI..................................................................$14</p>
-            <p className="kelly-slab-font text-sm text-gray-400">Empress Indigo gin, elderflower liqueur, lavender essence, fresh lemon juice, eggwhite</p>
-          </div>
-        </div>
-      );
+const Drinks = ({ data , loaded }) => {
+  return (
+    <div className="flex flex-wrap sm:mx-14 text-start">
+      {!loaded
+        ? new Array(8).fill(0).map((_, index) => (
+            <div key={index} className="w-full sm:w-1/2 p-4">
+              <Shimmer />
+            </div>
+          ))
+        : data?.menuItems?.map((val, index) => (
+            <div key={index} className="w-full sm:w-1/2 p-4">
+          <p className="sm:text-2xl oswald-font text-start">
+          {val?.listName}.....................${val?.price}
+              </p>
+              <p className="kelly-slab-font text-sm text-start text-gray-400">
+                {val.description}
+              </p>
+            </div>
+          ))}
+    </div>
+  );
 };
 
 export default Drinks;

@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Drinks from "./BodyComponents/Drinks";
 import BrunchCocktails from "./BodyComponents/BrunchCocktails";
 import Hookahflavors from "./BodyComponents/Hookahflavors";
 import Rules from "./BodyComponents/Rules";
+import axios from "axios";
 
 const MenuList = () => {
+    const [data,setData] = useState([])
+    const [loaded,setLoaded] = useState(false)
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get('http://localhost:3001/getDatas');
+            if (response?.status) {
+                setData(response.data)
+                setLoaded(true)
+            } else {
+              throw new Error("Failed to fetch user data");
+            }
+          } catch (error) {
+            console.error(error);
+          }
+        };
+        fetchData();
+      }, []);
   return (
     <>
       <div className="flex sm:justify-between justify-center gap-20 mt-5 sm:mt-16 pb-20">
@@ -36,7 +55,7 @@ const MenuList = () => {
               />
             </div>
             <div className="mt-5 sm:mt-20">
-              <Drinks />
+              <Drinks data={data[0]} loaded={loaded}/>
             </div>
           </div>
           <div className="flex-col border border-white h-fit pb-6 mx-2 relative">
@@ -61,7 +80,7 @@ const MenuList = () => {
               className="h-20 w-20 sm:h-40 sm:w-40 absolute bottom-0 right-0 transform translate-y-2 sm:translate-y-10 translate-x-2 sm:translate-x-5"
             />
             <div className="mt-5 sm:mt-20">
-              <BrunchCocktails />
+              <BrunchCocktails data={data[1]} loaded={loaded}/>
             </div>
           </div>
           <div className="flex-col border border-gray-400 h-fit pb-6 mx-2 oswald-font">
